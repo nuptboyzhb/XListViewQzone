@@ -89,20 +89,6 @@ public final class ActivityList1_
     }
 
     @Override
-    public void refreshListViewInBackground() {
-        handler_.post(new Runnable() {
-
-
-            @Override
-            public void run() {
-                ActivityList1_.super.refreshListViewInBackground();
-            }
-
-        }
-        );
-    }
-
-    @Override
     public void loadMoreInBackground() {
         handler_.post(new Runnable() {
 
@@ -110,6 +96,20 @@ public final class ActivityList1_
             @Override
             public void run() {
                 ActivityList1_.super.loadMoreInBackground();
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void refreshListViewInBackground() {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                ActivityList1_.super.refreshListViewInBackground();
             }
 
         }

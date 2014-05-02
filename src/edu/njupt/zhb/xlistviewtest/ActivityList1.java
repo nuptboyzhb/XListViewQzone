@@ -26,6 +26,8 @@ public class ActivityList1 extends Activity implements IXListViewListener{
 		baseAdapter1 = new BaseAdapter1(this,R.layout.listview1);
 		listView.setAdapter(baseAdapter1);
 		listView.setXListViewListener(this);//添加XListView的上拉和下拉刷新监听器
+		listView.setPullLoadEnable(true);
+		listView.setPullRefreshEnable(true);
 		for(int i=0;i<10;i++){
 			Model model = new Model();
 			model.setImgHead(R.drawable.ic_launcher);
@@ -43,8 +45,10 @@ public class ActivityList1 extends Activity implements IXListViewListener{
 		// TODO Auto-generated method stub
 		Log.d("ItemClick", "pos="+position);
 		position = position - 1;
-		String string = "clicked item"+position+"content="+baseAdapter1.getModel(position).getTelephone();
-		Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
+		if(null != baseAdapter1.getModel(position)){
+			String string = "clicked item"+position+"content="+baseAdapter1.getModel(position).getTelephone();
+			Toast.makeText(this, string, Toast.LENGTH_SHORT).show();
+		}
 	}
 	
 	@Override
