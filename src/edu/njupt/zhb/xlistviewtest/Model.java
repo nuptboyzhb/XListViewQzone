@@ -23,6 +23,34 @@ public class Model {
 	private String date;// 日期
 	private String phonemodel;// 手机型号
 	private int type;// 消息类型
+	private boolean agree;//是否点过赞
+	private String address;//位置信息
+	private List<String> agreeShow;//获得“赞”的姓名列表
+	private List<String> comment;//用户评论列表
+	public List<String> getAgreeShow() {
+		return agreeShow;
+	}
+	public void setAgreeShow(List<String> agreeShow) {
+		this.agreeShow = agreeShow;
+	}
+	public List<String> getComment() {
+		return comment;
+	}
+	public void setComment(List<String> comment) {
+		this.comment = comment;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public boolean isAgree() {
+		return agree;
+	}
+	public void setAgree(boolean agree) {
+		this.agree = agree;
+	}
 	private String content;// 消息内容
 	private List<String> imageUrls;// 图片的Url地址
 	public int getImgHead() {

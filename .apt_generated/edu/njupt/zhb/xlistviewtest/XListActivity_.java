@@ -14,6 +14,7 @@ import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import edu.njupt.zhb.xlistviewtest.R.layout;
@@ -21,8 +22,8 @@ import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
 import org.androidannotations.api.view.OnViewChangedNotifier;
 
-public final class ActivityList1_
-    extends ActivityList1
+public final class XListActivity_
+    extends XListActivity
     implements HasViews, OnViewChangedListener
 {
 
@@ -35,11 +36,12 @@ public final class ActivityList1_
         init_(savedInstanceState);
         super.onCreate(savedInstanceState);
         OnViewChangedNotifier.replaceNotifier(previousNotifier);
-        setContentView(layout.activity_list_1);
+        setContentView(layout.activity_xlist);
     }
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
     }
 
     @Override
@@ -60,12 +62,12 @@ public final class ActivityList1_
         onViewChangedNotifier_.notifyViewChanged(this);
     }
 
-    public static ActivityList1_.IntentBuilder_ intent(Context context) {
-        return new ActivityList1_.IntentBuilder_(context);
+    public static XListActivity_.IntentBuilder_ intent(Context context) {
+        return new XListActivity_.IntentBuilder_(context);
     }
 
-    public static ActivityList1_.IntentBuilder_ intent(Fragment supportFragment) {
-        return new ActivityList1_.IntentBuilder_(supportFragment);
+    public static XListActivity_.IntentBuilder_ intent(Fragment supportFragment) {
+        return new XListActivity_.IntentBuilder_(supportFragment);
     }
 
     @Override
@@ -78,7 +80,7 @@ public final class ActivityList1_
 
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        ActivityList1_.this.onItemClick(position);
+                        XListActivity_.this.onItemClick(position);
                     }
 
                 }
@@ -95,7 +97,7 @@ public final class ActivityList1_
 
             @Override
             public void run() {
-                ActivityList1_.super.refreshListViewInBackground();
+                XListActivity_.super.refreshListViewInBackground();
             }
 
         }
@@ -109,7 +111,7 @@ public final class ActivityList1_
 
             @Override
             public void run() {
-                ActivityList1_.super.loadMoreInBackground();
+                XListActivity_.super.loadMoreInBackground();
             }
 
         }
@@ -124,20 +126,20 @@ public final class ActivityList1_
 
         public IntentBuilder_(Context context) {
             context_ = context;
-            intent_ = new Intent(context, ActivityList1_.class);
+            intent_ = new Intent(context, XListActivity_.class);
         }
 
         public IntentBuilder_(Fragment fragment) {
             fragmentSupport_ = fragment;
             context_ = fragment.getActivity();
-            intent_ = new Intent(context_, ActivityList1_.class);
+            intent_ = new Intent(context_, XListActivity_.class);
         }
 
         public Intent get() {
             return intent_;
         }
 
-        public ActivityList1_.IntentBuilder_ flags(int flags) {
+        public XListActivity_.IntentBuilder_ flags(int flags) {
             intent_.setFlags(flags);
             return this;
         }

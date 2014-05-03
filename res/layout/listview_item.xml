@@ -77,18 +77,45 @@
             <GridView
                 android:id="@+id/gridview"
                 android:layout_width="fill_parent"
-                android:layout_height="243dp"
-                android:columnWidth="90dp"
+                android:layout_height="wrap_content"
+                android:columnWidth="110dp"
                 android:gravity="center"
-                android:horizontalSpacing="10dp"
+                android:horizontalSpacing="2dp"
                 android:numColumns="auto_fit"
                 android:stretchMode="columnWidth"
-                android:verticalSpacing="10dp" 
+                android:verticalSpacing="2dp" 
                 android:visibility="gone"/>
 
+            <RelativeLayout 
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                >
+                <ImageView 
+                    android:id="@+id/ivAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:paddingLeft="2dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/qzone_address_icon"
+                    android:visibility="gone"
+                    />
+                <TextView 
+                    android:id="@+id/tvAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ivAddress"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="5dp"
+                    android:textSize="10sp"
+                    android:visibility="gone"
+                    />
+            </RelativeLayout>
             <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" >
 
                 <ImageView
                     android:id="@+id/ivPhone"
@@ -151,11 +178,55 @@
                 </ImageView>
             </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+            <ImageView
+                android:id="@+id/ivAgreeShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="2dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:visibility="gone"
+                android:src="@drawable/qzone_picviewer_bottom_praise_icon"
+                />
+            <TextView 
+                android:id="@+id/tvAgreeShow"
+                android:layout_toRightOf="@id/ivAgreeShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:layout_centerVertical="true"
+                android:visibility="gone"
+                />"
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" >
+            <Button
+                android:id="@+id/btnSendComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:textSize="10sp"
+                android:text="发送"
+                android:focusable="false"
+                android:background="#00000000"
+                />
             <EditText
                 android:id="@+id/etComment"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:hint="Please input your comment..." />
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@id/btnSendComment"
+                android:hint="Please input your comment..."
+                android:textSize="10sp" />
+                </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
 
