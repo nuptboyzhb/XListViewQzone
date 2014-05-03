@@ -26,18 +26,18 @@ public class Model {
 	private boolean agree;//是否点过赞
 	private String address;//位置信息
 	private List<String> agreeShow;//获得“赞”的姓名列表
-	private List<String> comment;//用户评论列表
+	private List<String> comments;//用户评论列表
 	public List<String> getAgreeShow() {
 		return agreeShow;
 	}
 	public void setAgreeShow(List<String> agreeShow) {
 		this.agreeShow = agreeShow;
 	}
-	public List<String> getComment() {
-		return comment;
+	public List<String> getComments() {
+		return comments;
 	}
-	public void setComment(List<String> comment) {
-		this.comment = comment;
+	public void setComments(List<String> comments) {
+		this.comments = comments;
 	}
 	public String getAddress() {
 		return address;

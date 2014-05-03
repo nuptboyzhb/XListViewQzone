@@ -13,12 +13,15 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -68,10 +71,12 @@ public class XBaseAdapter extends BaseAdapter {
 					R.layout.gridview_item, model.getImageUrls());
 			gridView.setAdapter(gridAdapter);
 		}
-		if(!model.getAddress().isEmpty()){
-			ImageView ivAddress = (ImageView)convertView.findViewById(R.id.ivAddress);
+		if (!model.getAddress().isEmpty()) {
+			ImageView ivAddress = (ImageView) convertView
+					.findViewById(R.id.ivAddress);
 			ivAddress.setVisibility(View.VISIBLE);
-			TextView tvAddress = (TextView)convertView.findViewById(R.id.tvAddress);
+			TextView tvAddress = (TextView) convertView
+					.findViewById(R.id.tvAddress);
 			tvAddress.setVisibility(View.VISIBLE);
 			tvAddress.setText(model.getAddress());
 		}
@@ -89,15 +94,30 @@ public class XBaseAdapter extends BaseAdapter {
 				.findViewById(R.id.ivComment);
 		ivComment
 				.setOnClickListener(new ListViewButtonOnClickListener(position));
-		if(null != model.getAgreeShow() && model.getAgreeShow().size()>0){
-			ImageView ivAgreeShow = (ImageView)convertView.findViewById(R.id.ivAgreeShow);
+		if (null != model.getAgreeShow() && model.getAgreeShow().size() > 0) {
+			ImageView ivAgreeShow = (ImageView) convertView
+					.findViewById(R.id.ivAgreeShow);
 			ivAgreeShow.setVisibility(View.VISIBLE);
-			TextView tvAgreeShow = (TextView)convertView.findViewById(R.id.tvAgreeShow);
+			TextView tvAgreeShow = (TextView) convertView
+					.findViewById(R.id.tvAgreeShow);
 			tvAgreeShow.setVisibility(View.VISIBLE);
-			tvAgreeShow.setText(model.getAgreeShow().toString()+"觉得很赞！");
+			tvAgreeShow.setText(model.getAgreeShow().toString() + "觉得很赞！");
 		}
-		Button btnSendComment = (Button)convertView.findViewById(R.id.btnSendComment);
-		btnSendComment.setOnClickListener(new ListViewButtonOnClickListener(position));
+		Button btnSendComment = (Button) convertView
+				.findViewById(R.id.btnSendComment);
+		btnSendComment.setOnClickListener(new ListViewButtonOnClickListener(
+				position));
+		EditText etComment = (EditText)convertView.findViewById(R.id.etComment);
+		etComment.setOnKeyListener(new ListViewOnKeyListener(position));
+		if(null != model.getComments() && model.getComments().size()>0){
+			TextView tvComments = (TextView)convertView.findViewById(R.id.tvComments);
+			tvComments.setVisibility(View.VISIBLE);
+			String string = "";
+			for(String comment:model.getComments()){
+				string+=comment;
+			}
+			tvComments.setText(string);
+		}
 		return convertView;
 	}
 
@@ -133,16 +153,19 @@ public class XBaseAdapter extends BaseAdapter {
 
 	/**
 	 * 添加一条记录
+	 * 
 	 * @param model
-	 * @param insertHead true:插入在头部
+	 * @param insertHead
+	 *            true:插入在头部
 	 */
-	public void addModel(Model model,boolean insertHead){
-		if(insertHead){
+	public void addModel(Model model, boolean insertHead) {
+		if (insertHead) {
 			listViewData.add(0, model);
-		}else{
+		} else {
 			listViewData.add(model);
 		}
 	}
+
 	/**
 	 * 获取一条记录
 	 * 
@@ -177,11 +200,11 @@ public class XBaseAdapter extends BaseAdapter {
 				ImageView ivAgree = (ImageView) v;
 				Model model = listViewData.get(position);
 				List<String> agreeShow = model.getAgreeShow();
-				if(null == agreeShow || agreeShow.size()<=0){
+				if (null == agreeShow || agreeShow.size() <= 0) {
 					agreeShow = new ArrayList<String>();
 				}
 				if (model.isAgree()) {
-				    agreeShow.remove("我");
+					agreeShow.remove("我");
 					ivAgree.setImageResource(R.drawable.qzone_picviewer_bottom_unpraise_icon);
 				} else {
 					agreeShow.add("我");
@@ -190,17 +213,45 @@ public class XBaseAdapter extends BaseAdapter {
 				model.setAgree(!model.isAgree());
 				model.setAgreeShow(agreeShow);
 				notifyDataSetChanged();
-				//Toast.makeText(context, "你点了赞", Toast.LENGTH_SHORT).show();
+				// Toast.makeText(context, "你点了赞", Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.ivComment:
 				Toast.makeText(context, "你点了评论", Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.btnSendComment:
-				
+
 				break;
 			default:
 				break;
 			}
 		}
+	}
+
+	class ListViewOnKeyListener implements OnKeyListener {
+		private int position;
+		
+		public ListViewOnKeyListener(int position){
+			this.position = position;
+		}
+		
+		@Override
+		public boolean onKey(View v, int keyCode, KeyEvent event) {
+			if (keyCode == KeyEvent.KEYCODE_ENTER
+					&& event.getAction() == KeyEvent.ACTION_DOWN) {
+				EditText editView = (EditText)v;
+				String comment = editView.getEditableText().toString();
+				Model model = listViewData.get(position);
+				List<String> comments = model.getComments();
+				if(null == comments){
+					comments = new ArrayList<String>();
+				}
+				comment = "[me]:"+comment+"\n";
+				comments.add(comment);
+				model.setComments(comments);
+				notifyDataSetChanged();
+			}
+			return false;
+		}
+
 	}
 }

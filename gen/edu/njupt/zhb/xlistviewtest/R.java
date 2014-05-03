@@ -34,10 +34,10 @@ public final class R {
         public static final int xlistview_arrow=0x7f02000a;
     }
     public static final class id {
-        public static final int action_settings=0x7f08001f;
-        public static final int btnSendComment=0x7f080013;
+        public static final int action_settings=0x7f080020;
+        public static final int btnSendComment=0x7f080014;
         public static final int contacts_items=0x7f080002;
-        public static final int etComment=0x7f080014;
+        public static final int etComment=0x7f080015;
         public static final int gridview=0x7f080008;
         public static final int imgHead=0x7f080004;
         public static final int ivAddress=0x7f080009;
@@ -46,26 +46,27 @@ public final class R {
         public static final int ivComment=0x7f08000e;
         public static final int ivPhone=0x7f08000b;
         public static final int ivPhoto=0x7f080001;
-        public static final int lastLine=0x7f080015;
+        public static final int lastLine=0x7f080016;
         public static final int listView=0x7f080000;
         public static final int topLine=0x7f080003;
         public static final int tvAddress=0x7f08000a;
         public static final int tvAgree=0x7f08000f;
         public static final int tvAgreeShow=0x7f080012;
         public static final int tvComment=0x7f08000d;
+        public static final int tvComments=0x7f080013;
         public static final int tvContent=0x7f080007;
         public static final int tvDate=0x7f080006;
         public static final int tvName=0x7f080005;
         public static final int tvPhonemodel=0x7f08000c;
-        public static final int xlistview_footer_content=0x7f080016;
-        public static final int xlistview_footer_hint_textview=0x7f080018;
-        public static final int xlistview_footer_progressbar=0x7f080017;
-        public static final int xlistview_header_arrow=0x7f08001d;
-        public static final int xlistview_header_content=0x7f080019;
-        public static final int xlistview_header_hint_textview=0x7f08001b;
-        public static final int xlistview_header_progressbar=0x7f08001e;
-        public static final int xlistview_header_text=0x7f08001a;
-        public static final int xlistview_header_time=0x7f08001c;
+        public static final int xlistview_footer_content=0x7f080017;
+        public static final int xlistview_footer_hint_textview=0x7f080019;
+        public static final int xlistview_footer_progressbar=0x7f080018;
+        public static final int xlistview_header_arrow=0x7f08001e;
+        public static final int xlistview_header_content=0x7f08001a;
+        public static final int xlistview_header_hint_textview=0x7f08001c;
+        public static final int xlistview_header_progressbar=0x7f08001f;
+        public static final int xlistview_header_text=0x7f08001b;
+        public static final int xlistview_header_time=0x7f08001d;
     }
     public static final class layout {
         public static final int activity_xlist=0x7f030000;
