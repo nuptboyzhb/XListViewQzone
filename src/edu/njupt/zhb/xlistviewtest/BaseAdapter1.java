@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.webkit.WebView.FindListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -49,13 +50,16 @@ public class BaseAdapter1 extends BaseAdapter {
         imageView.setImageBitmap(BitmapFactory.decodeResource(context.getResources(), model.getImgHead()));
         TextView tvName = (TextView)convertView.findViewById(R.id.tvName);
         tvName.setText(model.getName());
-        TextView tvTelephone = (TextView)convertView.findViewById(R.id.tvTelephone);
-        tvTelephone.setText(model.getTelephone());
         TextView tvDate = (TextView)convertView.findViewById(R.id.tvDate);
         tvDate.setText(model.getDate());
-        Button btnCall = (Button) convertView.findViewById(R.id.btnCall);
-        btnCall.setText("拨打电话");
-        btnCall.setOnClickListener(new ListViewButtonOnClickListener(position) );
+        TextView tvContent = (TextView)convertView.findViewById(R.id.tvContent);
+        tvContent.setText(model.getContent());
+        TextView tvPhonemodel = (TextView)convertView.findViewById(R.id.tvPhonemodel);
+        tvPhonemodel.setText(model.getPhonemodel());
+        ImageView ivAgree = (ImageView)convertView.findViewById(R.id.ivAgree);
+        ivAgree.setOnClickListener(new ListViewButtonOnClickListener(position) );
+        ImageView ivComment = (ImageView)convertView.findViewById(R.id.ivComment);
+        ivComment.setOnClickListener(new ListViewButtonOnClickListener(position));
 		return convertView;
 	}
 	
@@ -113,7 +117,18 @@ public class BaseAdapter1 extends BaseAdapter {
 		}
 		@Override
 		public void onClick(View v) {
-			Toast.makeText(context,listViewData.get(position).getTelephone(), Toast.LENGTH_SHORT).show();
+			switch (v.getId()) {
+			case R.id.ivAgree:
+				ImageView ivAgree = (ImageView)v;
+				ivAgree.setImageResource(R.drawable.qzone_picviewer_bottom_praise_icon);
+				Toast.makeText(context,"你点了赞", Toast.LENGTH_SHORT).show();
+				break;
+			case R.id.ivComment:
+				Toast.makeText(context,"你点了评论", Toast.LENGTH_SHORT).show();
+				break;
+			default:
+				break;
+			}
 		}
 	}
 }

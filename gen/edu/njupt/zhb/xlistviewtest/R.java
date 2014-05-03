@@ -21,48 +21,46 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int chatfrom_bg_normal=0x7f020000;
-        public static final int chatto_bg_normal=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int xlistview_arrow=0x7f020003;
+        public static final int ic_launcher=0x7f020000;
+        public static final int qzone_picviewer_bottom_comment_icon=0x7f020001;
+        public static final int qzone_picviewer_bottom_praise_icon=0x7f020002;
+        public static final int qzone_picviewer_bottom_unpraise_icon=0x7f020003;
+        public static final int status_phone=0x7f020004;
+        public static final int xlistview_arrow=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f080018;
-        public static final int bottomLine=0x7f08000d;
-        public static final int btnCall=0x7f08000c;
-        public static final int btnList1=0x7f080001;
-        public static final int btnList2=0x7f080002;
-        public static final int btnList3=0x7f080003;
-        public static final int btn_left_text=0x7f080005;
-        public static final int btn_right_text=0x7f080006;
-        public static final int contacts_items=0x7f080007;
-        public static final int imgHead=0x7f080004;
-        public static final int lastLine=0x7f08000e;
+        public static final int action_settings=0x7f080019;
+        public static final int contacts_items=0x7f080001;
+        public static final int etComment=0x7f08000e;
+        public static final int gridview=0x7f080007;
+        public static final int imgHead=0x7f080003;
+        public static final int ivAgree=0x7f08000d;
+        public static final int ivComment=0x7f08000b;
+        public static final int ivPhone=0x7f080008;
+        public static final int lastLine=0x7f08000f;
         public static final int listView=0x7f080000;
-        public static final int topLine=0x7f080008;
-        public static final int tvDate=0x7f08000b;
-        public static final int tvName=0x7f080009;
-        public static final int tvTelephone=0x7f08000a;
-        public static final int xlistview_footer_content=0x7f08000f;
-        public static final int xlistview_footer_hint_textview=0x7f080011;
-        public static final int xlistview_footer_progressbar=0x7f080010;
-        public static final int xlistview_header_arrow=0x7f080016;
-        public static final int xlistview_header_content=0x7f080012;
-        public static final int xlistview_header_hint_textview=0x7f080014;
-        public static final int xlistview_header_progressbar=0x7f080017;
-        public static final int xlistview_header_text=0x7f080013;
-        public static final int xlistview_header_time=0x7f080015;
+        public static final int topLine=0x7f080002;
+        public static final int tvAgree=0x7f08000c;
+        public static final int tvComment=0x7f08000a;
+        public static final int tvContent=0x7f080006;
+        public static final int tvDate=0x7f080005;
+        public static final int tvName=0x7f080004;
+        public static final int tvPhonemodel=0x7f080009;
+        public static final int xlistview_footer_content=0x7f080010;
+        public static final int xlistview_footer_hint_textview=0x7f080012;
+        public static final int xlistview_footer_progressbar=0x7f080011;
+        public static final int xlistview_header_arrow=0x7f080017;
+        public static final int xlistview_header_content=0x7f080013;
+        public static final int xlistview_header_hint_textview=0x7f080015;
+        public static final int xlistview_header_progressbar=0x7f080018;
+        public static final int xlistview_header_text=0x7f080014;
+        public static final int xlistview_header_time=0x7f080016;
     }
     public static final class layout {
         public static final int activity_list_1=0x7f030000;
-        public static final int activity_list_2=0x7f030001;
-        public static final int activity_list_3=0x7f030002;
-        public static final int activity_main=0x7f030003;
-        public static final int list_item_left_text=0x7f030004;
-        public static final int list_item_right_text=0x7f030005;
-        public static final int listview1=0x7f030006;
-        public static final int xlistview_footer=0x7f030007;
-        public static final int xlistview_header=0x7f030008;
+        public static final int listview1=0x7f030001;
+        public static final int xlistview_footer=0x7f030002;
+        public static final int xlistview_header=0x7f030003;
     }
     public static final class menu {
         public static final int main=0x7f070000;
