@@ -90,10 +90,12 @@ public class XBaseAdapter extends BaseAdapter {
 			ivAgree.setImageResource(R.drawable.qzone_picviewer_bottom_unpraise_icon);
 		}
 		ivAgree.setOnClickListener(new ListViewButtonOnClickListener(position));
+		ivAgree.setFocusable(false);
 		ImageView ivComment = (ImageView) convertView
 				.findViewById(R.id.ivComment);
 		ivComment
 				.setOnClickListener(new ListViewButtonOnClickListener(position));
+		ivComment.setFocusable(false);
 		if (null != model.getAgreeShow() && model.getAgreeShow().size() > 0) {
 			ImageView ivAgreeShow = (ImageView) convertView
 					.findViewById(R.id.ivAgreeShow);
@@ -107,8 +109,10 @@ public class XBaseAdapter extends BaseAdapter {
 				.findViewById(R.id.btnSendComment);
 		btnSendComment.setOnClickListener(new ListViewButtonOnClickListener(
 				position));
+		btnSendComment.setFocusable(false);
 		EditText etComment = (EditText)convertView.findViewById(R.id.etComment);
 		etComment.setOnKeyListener(new ListViewOnKeyListener(position));
+		etComment.setFocusable(false);
 		if(null != model.getComments() && model.getComments().size()>0){
 			TextView tvComments = (TextView)convertView.findViewById(R.id.tvComments);
 			tvComments.setVisibility(View.VISIBLE);

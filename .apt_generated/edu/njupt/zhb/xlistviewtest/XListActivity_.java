@@ -17,6 +17,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 import edu.njupt.zhb.xlistviewtest.R.layout;
 import org.androidannotations.api.view.HasViews;
 import org.androidannotations.api.view.OnViewChangedListener;
@@ -72,6 +74,8 @@ public final class XListActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
+        etComment = ((EditText) hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.etComment));
+        btnSendComment = ((Button) hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.btnSendComment));
         {
             AdapterView<?> view = ((AdapterView<?> ) hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.listView));
             if (view!= null) {
@@ -91,20 +95,6 @@ public final class XListActivity_
     }
 
     @Override
-    public void refreshListViewInBackground() {
-        handler_.post(new Runnable() {
-
-
-            @Override
-            public void run() {
-                XListActivity_.super.refreshListViewInBackground();
-            }
-
-        }
-        );
-    }
-
-    @Override
     public void loadMoreInBackground() {
         handler_.post(new Runnable() {
 
@@ -112,6 +102,20 @@ public final class XListActivity_
             @Override
             public void run() {
                 XListActivity_.super.loadMoreInBackground();
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void refreshListViewInBackground() {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                XListActivity_.super.refreshListViewInBackground();
             }
 
         }

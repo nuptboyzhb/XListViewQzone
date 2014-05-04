@@ -13,9 +13,13 @@ import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.NoTitle;
 import org.androidannotations.annotations.UiThread;
+import org.androidannotations.annotations.ViewById;
 
 import android.app.Activity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 @NoTitle
 @EActivity(R.layout.activity_xlist)
@@ -25,6 +29,12 @@ public class XListActivity extends Activity implements IXListViewListener {
 	// ListView的设配器
 	private XBaseAdapter xBaseAdapter;
 
+	@ViewById
+	Button btnSendComment;
+	
+	@ViewById
+	EditText etComment;
+	
 	@AfterViews
 	void afterViewInitList() {
 		listView = (XListView) findViewById(R.id.listView);
@@ -71,6 +81,9 @@ public class XListActivity extends Activity implements IXListViewListener {
 		// TODO Auto-generated method stub
 		Log.d("ItemClick", "pos=" + position);
 		position = position - 1;
+		btnSendComment.setVisibility(View.VISIBLE);
+		etComment.setVisibility(View.VISIBLE);
+		etComment.setFocusable(true);
 		if (null != xBaseAdapter.getModel(position)) {
 			Toast.makeText(this, "click Item...", Toast.LENGTH_SHORT).show();
 		}
