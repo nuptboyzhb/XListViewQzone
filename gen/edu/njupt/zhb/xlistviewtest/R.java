@@ -21,20 +21,22 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int head=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int image_missing=0x7f020002;
-        public static final int pic_screen=0x7f020003;
-        public static final int qq_contact_list_friend_entry_icon=0x7f020004;
-        public static final int qzone_address_icon=0x7f020005;
-        public static final int qzone_picviewer_bottom_comment_icon=0x7f020006;
-        public static final int qzone_picviewer_bottom_praise_icon=0x7f020007;
-        public static final int qzone_picviewer_bottom_unpraise_icon=0x7f020008;
-        public static final int status_phone=0x7f020009;
-        public static final int xlistview_arrow=0x7f02000a;
+        public static final int btn_shape=0x7f020000;
+        public static final int head=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int image_missing=0x7f020003;
+        public static final int pic_screen=0x7f020004;
+        public static final int qq_contact_list_friend_entry_icon=0x7f020005;
+        public static final int qzone_address_icon=0x7f020006;
+        public static final int qzone_picviewer_bottom_comment_icon=0x7f020007;
+        public static final int qzone_picviewer_bottom_praise_icon=0x7f020008;
+        public static final int qzone_picviewer_bottom_unpraise_icon=0x7f020009;
+        public static final int status_phone=0x7f02000a;
+        public static final int xlistview_arrow=0x7f02000b;
     }
     public static final class id {
-        public static final int action_settings=0x7f080021;
+        public static final int action_settings=0x7f080022;
+        public static final int btnComment=0x7f080017;
         public static final int btnSendComment=0x7f080001;
         public static final int contacts_items=0x7f080005;
         public static final int etComment=0x7f080002;
@@ -46,7 +48,7 @@ public final class R {
         public static final int ivComment=0x7f080011;
         public static final int ivPhone=0x7f08000e;
         public static final int ivPhoto=0x7f080004;
-        public static final int lastLine=0x7f080017;
+        public static final int lastLine=0x7f080018;
         public static final int listView=0x7f080003;
         public static final int rl_input=0x7f080000;
         public static final int topLine=0x7f080006;
@@ -59,15 +61,15 @@ public final class R {
         public static final int tvDate=0x7f080009;
         public static final int tvName=0x7f080008;
         public static final int tvPhonemodel=0x7f08000f;
-        public static final int xlistview_footer_content=0x7f080018;
-        public static final int xlistview_footer_hint_textview=0x7f08001a;
-        public static final int xlistview_footer_progressbar=0x7f080019;
-        public static final int xlistview_header_arrow=0x7f08001f;
-        public static final int xlistview_header_content=0x7f08001b;
-        public static final int xlistview_header_hint_textview=0x7f08001d;
-        public static final int xlistview_header_progressbar=0x7f080020;
-        public static final int xlistview_header_text=0x7f08001c;
-        public static final int xlistview_header_time=0x7f08001e;
+        public static final int xlistview_footer_content=0x7f080019;
+        public static final int xlistview_footer_hint_textview=0x7f08001b;
+        public static final int xlistview_footer_progressbar=0x7f08001a;
+        public static final int xlistview_header_arrow=0x7f080020;
+        public static final int xlistview_header_content=0x7f08001c;
+        public static final int xlistview_header_hint_textview=0x7f08001e;
+        public static final int xlistview_header_progressbar=0x7f080021;
+        public static final int xlistview_header_text=0x7f08001d;
+        public static final int xlistview_header_time=0x7f08001f;
     }
     public static final class layout {
         public static final int activity_xlist=0x7f030000;

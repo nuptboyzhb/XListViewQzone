@@ -16,11 +16,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="#00000000"
+            android:background="@drawable/btn_shape"
             android:focusable="false"
             android:visibility="gone"
-            android:text="发送"
-            android:textSize="10sp" />
+            android:text="发送"/>
 
         <EditText
             android:id="@+id/etComment"
@@ -28,9 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@id/btnSendComment"
-            android:hint="Please input your comment..."
-            android:visibility="gone"
-            android:textSize="10sp" />
+            android:hint="输入评论"
+            android:visibility="gone" />
     </RelativeLayout>
 
     <me.maxwin.view.XListView

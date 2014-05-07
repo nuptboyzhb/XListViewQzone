@@ -9,6 +9,7 @@ import me.maxwin.view.XListView;
 import me.maxwin.view.XListView.IXListViewListener;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ItemClick;
 import org.androidannotations.annotations.NoTitle;
@@ -38,7 +39,7 @@ public class XListActivity extends Activity implements IXListViewListener {
 	@AfterViews
 	void afterViewInitList() {
 		listView = (XListView) findViewById(R.id.listView);
-		xBaseAdapter = new XBaseAdapter(this, R.layout.listview_item);
+		xBaseAdapter = new XBaseAdapter(this, R.layout.listview_item,this);
 		listView.setAdapter(xBaseAdapter);
 		listView.setXListViewListener(this);// 添加XListView的上拉和下拉刷新监听器
 		listView.setPullLoadEnable(true);
@@ -81,14 +82,18 @@ public class XListActivity extends Activity implements IXListViewListener {
 		// TODO Auto-generated method stub
 		Log.d("ItemClick", "pos=" + position);
 		position = position - 1;
-		btnSendComment.setVisibility(View.VISIBLE);
-		etComment.setVisibility(View.VISIBLE);
-		etComment.setFocusable(true);
+		
 		if (null != xBaseAdapter.getModel(position)) {
 			Toast.makeText(this, "click Item...", Toast.LENGTH_SHORT).show();
 		}
 	}
 
+	@Click(R.id.btnSendComment)
+	void btnSendComment(){
+		String comment = etComment.getEditableText().toString();
+		Toast.makeText(this, comment, Toast.LENGTH_SHORT).show();
+	}
+	
 	@Override
 	public void onRefresh() {
 		Log.d("xlistview", "onrefresh");

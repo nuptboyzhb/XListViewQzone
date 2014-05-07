@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -74,8 +75,23 @@ public final class XListActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        etComment = ((EditText) hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.etComment));
         btnSendComment = ((Button) hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.btnSendComment));
+        etComment = ((EditText) hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.etComment));
+        {
+            View view = hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.btnSendComment);
+            if (view!= null) {
+                view.setOnClickListener(new OnClickListener() {
+
+
+                    @Override
+                    public void onClick(View view) {
+                        XListActivity_.this.btnSendComment();
+                    }
+
+                }
+                );
+            }
+        }
         {
             AdapterView<?> view = ((AdapterView<?> ) hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.listView));
             if (view!= null) {
@@ -95,20 +111,6 @@ public final class XListActivity_
     }
 
     @Override
-    public void loadMoreInBackground() {
-        handler_.post(new Runnable() {
-
-
-            @Override
-            public void run() {
-                XListActivity_.super.loadMoreInBackground();
-            }
-
-        }
-        );
-    }
-
-    @Override
     public void refreshListViewInBackground() {
         handler_.post(new Runnable() {
 
@@ -116,6 +118,20 @@ public final class XListActivity_
             @Override
             public void run() {
                 XListActivity_.super.refreshListViewInBackground();
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void loadMoreInBackground() {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                XListActivity_.super.loadMoreInBackground();
             }
 
         }

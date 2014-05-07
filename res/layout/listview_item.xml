@@ -231,14 +231,16 @@
                 android:text="发送"
                 android:focusable="false"
                 android:background="#00000000"
+                android:visibility="gone"
                 />
-            <EditText
-                android:id="@+id/etComment"
+            <Button
+                android:id="@+id/btnComment"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_toLeftOf="@id/btnSendComment"
                 android:hint="Please input your comment..."
+                android:background="@drawable/btn_shape"
                 android:textSize="10sp" />
                 </RelativeLayout>
         </LinearLayout>

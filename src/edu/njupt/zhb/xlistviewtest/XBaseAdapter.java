@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,14 +40,17 @@ public class XBaseAdapter extends BaseAdapter {
 
 	private Context context;
 
+	private Activity activity;
+
 	private List<Model> listViewData;
 
 	private int layoutResId;// ListView每个Item的布局文件
 
-	public XBaseAdapter(Context context, int layoutResId) {
+	public XBaseAdapter(Context context, int layoutResId, Activity activity) {
 		this.context = context;
 		this.layoutResId = layoutResId;
 		listViewData = new ArrayList<Model>();
+		this.activity = activity;
 	}
 
 	@Override
@@ -96,6 +101,8 @@ public class XBaseAdapter extends BaseAdapter {
 		ivComment
 				.setOnClickListener(new ListViewButtonOnClickListener(position));
 		ivComment.setFocusable(false);
+		TextView tvComment = (TextView)convertView.findViewById(R.id.tvComment);
+		tvComment.setOnClickListener(new ListViewButtonOnClickListener(position));
 		if (null != model.getAgreeShow() && model.getAgreeShow().size() > 0) {
 			ImageView ivAgreeShow = (ImageView) convertView
 					.findViewById(R.id.ivAgreeShow);
@@ -105,20 +112,18 @@ public class XBaseAdapter extends BaseAdapter {
 			tvAgreeShow.setVisibility(View.VISIBLE);
 			tvAgreeShow.setText(model.getAgreeShow().toString() + "觉得很赞！");
 		}
-		Button btnSendComment = (Button) convertView
-				.findViewById(R.id.btnSendComment);
-		btnSendComment.setOnClickListener(new ListViewButtonOnClickListener(
+		Button btnComment = (Button) convertView
+				.findViewById(R.id.btnComment);
+		btnComment.setOnClickListener(new ListViewButtonOnClickListener(
 				position));
-		btnSendComment.setFocusable(false);
-		EditText etComment = (EditText)convertView.findViewById(R.id.etComment);
-		etComment.setOnKeyListener(new ListViewOnKeyListener(position));
-		etComment.setFocusable(false);
-		if(null != model.getComments() && model.getComments().size()>0){
-			TextView tvComments = (TextView)convertView.findViewById(R.id.tvComments);
+		btnComment.setFocusable(false);
+		if (null != model.getComments() && model.getComments().size() > 0) {
+			TextView tvComments = (TextView) convertView
+					.findViewById(R.id.tvComments);
 			tvComments.setVisibility(View.VISIBLE);
 			String string = "";
-			for(String comment:model.getComments()){
-				string+=comment;
+			for (String comment : model.getComments()) {
+				string += comment+"\n";
 			}
 			tvComments.setText(string);
 		}
@@ -220,42 +225,47 @@ public class XBaseAdapter extends BaseAdapter {
 				// Toast.makeText(context, "你点了赞", Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.ivComment:
-				Toast.makeText(context, "你点了评论", Toast.LENGTH_SHORT).show();
+			case R.id.tvComment:
+			case R.id.btnComment:
+				InputMethodManager imm = (InputMethodManager) v.getContext()
+						.getSystemService(Context.INPUT_METHOD_SERVICE);
+				imm.toggleSoftInput(0, InputMethodManager.SHOW_FORCED);
+				Model model1 = listViewData.get(position);
+				String nikename = model1.getName();
+				activity.findViewById(R.id.etComment).setVisibility(
+						View.VISIBLE);
+				activity.findViewById(R.id.btnSendComment).setVisibility(
+						View.VISIBLE);
+				((EditText)activity.findViewById(R.id.etComment)).setHint("@"+nikename);
+				activity.findViewById(R.id.etComment).setFocusable(true);
+				activity.findViewById(R.id.btnSendComment).setOnClickListener(
+						new ListViewButtonOnClickListener(position));
 				break;
 			case R.id.btnSendComment:
-
+				Model mdl = listViewData.get(position);
+				List<String> commentsList = mdl.getComments();
+				String commentString = ((EditText) activity
+						.findViewById(R.id.etComment)).getEditableText()
+						.toString();
+				if (null == commentsList || commentsList.size() <= 0) {
+					commentsList = new ArrayList<String>();
+				}
+				commentsList.add(commentString);
+				mdl.setComments(commentsList);
+				notifyDataSetChanged();
+				((EditText) activity
+						.findViewById(R.id.etComment)).setText("");
+				activity.findViewById(R.id.etComment).setVisibility(
+						View.GONE);
+				activity.findViewById(R.id.btnSendComment).setVisibility(
+						View.GONE);
+				InputMethodManager imm2 = (InputMethodManager) v.getContext()
+						.getSystemService(Context.INPUT_METHOD_SERVICE);
+				imm2.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
 				break;
 			default:
 				break;
 			}
 		}
-	}
-
-	class ListViewOnKeyListener implements OnKeyListener {
-		private int position;
-		
-		public ListViewOnKeyListener(int position){
-			this.position = position;
-		}
-		
-		@Override
-		public boolean onKey(View v, int keyCode, KeyEvent event) {
-			if (keyCode == KeyEvent.KEYCODE_ENTER
-					&& event.getAction() == KeyEvent.ACTION_DOWN) {
-				EditText editView = (EditText)v;
-				String comment = editView.getEditableText().toString();
-				Model model = listViewData.get(position);
-				List<String> comments = model.getComments();
-				if(null == comments){
-					comments = new ArrayList<String>();
-				}
-				comment = "[me]:"+comment+"\n";
-				comments.add(comment);
-				model.setComments(comments);
-				notifyDataSetChanged();
-			}
-			return false;
-		}
-
 	}
 }
