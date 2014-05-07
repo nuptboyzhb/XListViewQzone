@@ -75,8 +75,8 @@ public final class XListActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        btnSendComment = ((Button) hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.btnSendComment));
         etComment = ((EditText) hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.etComment));
+        btnSendComment = ((Button) hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.btnSendComment));
         {
             View view = hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.btnSendComment);
             if (view!= null) {
