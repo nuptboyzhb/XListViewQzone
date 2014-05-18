@@ -14,11 +14,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.os.Build;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
@@ -27,7 +25,6 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /*
  *@author: ZhengHaibo  
@@ -55,77 +52,103 @@ public class XBaseAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		convertView = LayoutInflater.from(context).inflate(layoutResId, null);
+
 		Model model = listViewData.get(position);
-		ImageView imageView = (ImageView) convertView
-				.findViewById(R.id.imgHead);
-		imageView.setImageBitmap(BitmapFactory.decodeResource(
+		ViewItemHolder viewItemHolder = null;
+		if (convertView == null) {
+			convertView = LayoutInflater.from(context).inflate(layoutResId,
+					null);
+			viewItemHolder = new ViewItemHolder();
+			viewItemHolder.imgHead = (ImageView) convertView
+					.findViewById(R.id.imgHead);
+			viewItemHolder.tvName = (TextView) convertView
+					.findViewById(R.id.tvName);
+			viewItemHolder.tvDate = (TextView) convertView
+					.findViewById(R.id.tvDate);
+			viewItemHolder.tvContent = (TextView) convertView
+					.findViewById(R.id.tvContent);
+			viewItemHolder.ivPhoto = (ImageView) convertView
+					.findViewById(R.id.ivPhoto);
+			viewItemHolder.ivAddress = (ImageView) convertView
+					.findViewById(R.id.ivAddress);
+			viewItemHolder.tvAddress = (TextView) convertView
+					.findViewById(R.id.tvAddress);
+			viewItemHolder.tvPhonemodel = (TextView) convertView
+					.findViewById(R.id.tvPhonemodel);
+			viewItemHolder.ivAgree = (ImageView) convertView
+					.findViewById(R.id.ivAgree);
+			viewItemHolder.ivComment = (ImageView) convertView
+					.findViewById(R.id.ivComment);
+			viewItemHolder.tvComment = (TextView) convertView
+					.findViewById(R.id.tvComment);
+			viewItemHolder.ivAgreeShow = (ImageView) convertView
+					.findViewById(R.id.ivAgreeShow);
+			viewItemHolder.tvAgreeShow = (TextView) convertView
+					.findViewById(R.id.tvAgreeShow);
+			viewItemHolder.btnComment = (Button) convertView
+					.findViewById(R.id.btnComment);
+			viewItemHolder.tvComments = (TextView) convertView
+					.findViewById(R.id.tvComments);
+			convertView.setTag(viewItemHolder);
+		} else {
+			viewItemHolder = (ViewItemHolder) convertView.getTag();
+		}
+		viewItemHolder.imgHead.setImageBitmap(BitmapFactory.decodeResource(
 				context.getResources(), model.getImgHead()));
-		TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
-		tvName.setText(model.getName());
-		TextView tvDate = (TextView) convertView.findViewById(R.id.tvDate);
-		tvDate.setText(model.getDate());
-		TextView tvContent = (TextView) convertView
-				.findViewById(R.id.tvContent);
-		tvContent.setText(model.getContent());
-		if (model.getType() == 1) {// 图片资源
-			GridView gridView = (GridView) convertView
-					.findViewById(R.id.gridview);
-			gridView.setVisibility(View.VISIBLE);
-			GridAdapter gridAdapter = new GridAdapter(context,
-					R.layout.gridview_item, model.getImageUrls());
-			gridView.setAdapter(gridAdapter);
+		viewItemHolder.tvName.setText(model.getName());
+		viewItemHolder.tvDate.setText(model.getDate());
+		viewItemHolder.tvContent.setText(model.getContent());
+		if (model.getType() == FinalVar.MSG_IMAGE) {// 图片资源
+			viewItemHolder.ivPhoto.setImageResource(R.drawable.pic_screen);
+			viewItemHolder.ivPhoto.setVisibility(View.VISIBLE);
+		} else {
+			viewItemHolder.ivPhoto.setVisibility(View.GONE);
 		}
 		if (!model.getAddress().isEmpty()) {
-			ImageView ivAddress = (ImageView) convertView
-					.findViewById(R.id.ivAddress);
-			ivAddress.setVisibility(View.VISIBLE);
-			TextView tvAddress = (TextView) convertView
-					.findViewById(R.id.tvAddress);
-			tvAddress.setVisibility(View.VISIBLE);
-			tvAddress.setText(model.getAddress());
-		}
-		TextView tvPhonemodel = (TextView) convertView
-				.findViewById(R.id.tvPhonemodel);
-		tvPhonemodel.setText(model.getPhonemodel());
-		ImageView ivAgree = (ImageView) convertView.findViewById(R.id.ivAgree);
-		if (model.isAgree()) {
-			ivAgree.setImageResource(R.drawable.qzone_picviewer_bottom_praise_icon);
+			viewItemHolder.ivAddress.setVisibility(View.VISIBLE);
+			viewItemHolder.tvAddress.setVisibility(View.VISIBLE);
+			viewItemHolder.tvAddress.setText(model.getAddress());
 		} else {
-			ivAgree.setImageResource(R.drawable.qzone_picviewer_bottom_unpraise_icon);
+			viewItemHolder.ivAddress.setVisibility(View.GONE);
+			viewItemHolder.tvAddress.setVisibility(View.GONE);
 		}
-		ivAgree.setOnClickListener(new ListViewButtonOnClickListener(position));
-		ivAgree.setFocusable(false);
-		ImageView ivComment = (ImageView) convertView
-				.findViewById(R.id.ivComment);
-		ivComment
+		viewItemHolder.tvPhonemodel.setText(model.getPhonemodel());
+		viewItemHolder.ivAgree
 				.setOnClickListener(new ListViewButtonOnClickListener(position));
-		ivComment.setFocusable(false);
-		TextView tvComment = (TextView)convertView.findViewById(R.id.tvComment);
-		tvComment.setOnClickListener(new ListViewButtonOnClickListener(position));
-		if (null != model.getAgreeShow() && model.getAgreeShow().size() > 0) {
-			ImageView ivAgreeShow = (ImageView) convertView
-					.findViewById(R.id.ivAgreeShow);
-			ivAgreeShow.setVisibility(View.VISIBLE);
-			TextView tvAgreeShow = (TextView) convertView
-					.findViewById(R.id.tvAgreeShow);
-			tvAgreeShow.setVisibility(View.VISIBLE);
-			tvAgreeShow.setText(model.getAgreeShow().toString() + "觉得很赞！");
+		if (model.isAgree()) {
+			viewItemHolder.ivAgree
+					.setImageResource(R.drawable.qzone_picviewer_bottom_praise_icon);
+		} else {
+			viewItemHolder.ivAgree
+					.setImageResource(R.drawable.qzone_picviewer_bottom_unpraise_icon);
 		}
-		Button btnComment = (Button) convertView
-				.findViewById(R.id.btnComment);
-		btnComment.setOnClickListener(new ListViewButtonOnClickListener(
-				position));
-		btnComment.setFocusable(false);
+		viewItemHolder.ivAgree.setFocusable(false);
+		if (null != model.getAgreeShow() && model.getAgreeShow().size() > 0) {
+			viewItemHolder.ivAgreeShow.setVisibility(View.VISIBLE);
+			viewItemHolder.tvAgreeShow.setVisibility(View.VISIBLE);
+			viewItemHolder.tvAgreeShow.setText(model.getAgreeShow().toString()
+					+ "觉得很赞！");
+		} else {
+			viewItemHolder.ivAgreeShow.setVisibility(View.GONE);
+			viewItemHolder.tvAgreeShow.setVisibility(View.GONE);
+		}
+		viewItemHolder.ivComment
+				.setOnClickListener(new ListViewButtonOnClickListener(position));
+		viewItemHolder.ivComment.setFocusable(false);
+		viewItemHolder.tvComment
+				.setOnClickListener(new ListViewButtonOnClickListener(position));
+		viewItemHolder.btnComment
+				.setOnClickListener(new ListViewButtonOnClickListener(position));
+		viewItemHolder.btnComment.setFocusable(false);
 		if (null != model.getComments() && model.getComments().size() > 0) {
-			TextView tvComments = (TextView) convertView
-					.findViewById(R.id.tvComments);
-			tvComments.setVisibility(View.VISIBLE);
+			viewItemHolder.tvComments.setVisibility(View.VISIBLE);
 			String string = "";
 			for (String comment : model.getComments()) {
-				string += comment+"\n";
+				string += comment + "\n";
 			}
-			tvComments.setText(string);
+			viewItemHolder.tvComments.setText(string);
+		} else {
+			viewItemHolder.tvComments.setVisibility(View.GONE);
 		}
 		return convertView;
 	}
@@ -195,6 +218,24 @@ public class XBaseAdapter extends BaseAdapter {
 		listViewData.clear();
 	}
 
+	class ViewItemHolder {
+		ImageView imgHead;
+		TextView tvName;
+		TextView tvDate;
+		TextView tvContent;
+		ImageView ivPhoto;
+		ImageView ivAddress;
+		TextView tvAddress;
+		ImageView ivAgree;
+		TextView tvPhonemodel;
+		ImageView ivComment;
+		TextView tvComment;
+		ImageView ivAgreeShow;
+		TextView tvAgreeShow;
+		Button btnComment;
+		TextView tvComments;
+	}
+
 	class ListViewButtonOnClickListener implements OnClickListener {
 		private int position;// 记录ListView中Button所在的Item的位置
 
@@ -236,7 +277,8 @@ public class XBaseAdapter extends BaseAdapter {
 						View.VISIBLE);
 				activity.findViewById(R.id.btnSendComment).setVisibility(
 						View.VISIBLE);
-				((EditText)activity.findViewById(R.id.etComment)).setHint("@"+nikename);
+				((EditText) activity.findViewById(R.id.etComment)).setHint("@"
+						+ nikename);
 				activity.findViewById(R.id.etComment).setFocusable(true);
 				activity.findViewById(R.id.btnSendComment).setOnClickListener(
 						new ListViewButtonOnClickListener(position));
@@ -253,10 +295,8 @@ public class XBaseAdapter extends BaseAdapter {
 				commentsList.add(commentString);
 				mdl.setComments(commentsList);
 				notifyDataSetChanged();
-				((EditText) activity
-						.findViewById(R.id.etComment)).setText("");
-				activity.findViewById(R.id.etComment).setVisibility(
-						View.GONE);
+				((EditText) activity.findViewById(R.id.etComment)).setText("");
+				activity.findViewById(R.id.etComment).setVisibility(View.GONE);
 				activity.findViewById(R.id.btnSendComment).setVisibility(
 						View.GONE);
 				InputMethodManager imm2 = (InputMethodManager) v.getContext()

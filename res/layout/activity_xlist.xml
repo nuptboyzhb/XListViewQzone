@@ -3,38 +3,36 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-
     <RelativeLayout
         android:id="@+id/rl_input"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" >
-
         <Button
             android:id="@+id/btnSendComment"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="32dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:background="@drawable/btn_shape"
             android:focusable="false"
-            android:visibility="gone"
-            android:text="发送"/>
-
+            android:text="发送"
+            android:visibility="gone" />
         <EditText
             android:id="@+id/etComment"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="32dp"
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@id/btnSendComment"
+            android:background="@drawable/btn_shape"
             android:hint="输入评论"
             android:visibility="gone" />
     </RelativeLayout>
-
     <me.maxwin.view.XListView
         android:id="@+id/listView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/rl_input" />
-
 </RelativeLayout>

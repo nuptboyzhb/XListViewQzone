@@ -5,20 +5,17 @@
     android:layout_height="fill_parent"
     android:background="#ffffff"
     android:orientation="vertical" >
-
     <View
         android:id="@+id/topLine"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="#ffcccccc" />
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal" >
-
         <ImageView
             android:id="@+id/imgHead"
             android:layout_width="40dp"
@@ -26,18 +23,15 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:src="@drawable/ic_launcher" />
-
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:orientation="vertical" >
-
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp" >
-
                 <TextView
                     android:id="@+id/tvName"
                     android:layout_width="wrap_content"
@@ -48,7 +42,6 @@
                     android:singleLine="true"
                     android:text="Tom"
                     android:textSize="16.0sp" />
-
                 <TextView
                     android:id="@+id/tvDate"
                     android:layout_width="wrap_content"
@@ -63,7 +56,6 @@
                     android:textColor="#ffcccccc"
                     android:textSize="12sp" />
             </RelativeLayout>
-
             <TextView
                 android:id="@+id/tvContent"
                 android:layout_width="fill_parent"
@@ -73,50 +65,41 @@
                 android:text="Hello world"
                 android:textSize="14sp" >
             </TextView>
-
-            <GridView
-                android:id="@+id/gridview"
+            <ImageView
+                android:id="@+id/ivPhoto"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:columnWidth="110dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:gravity="center"
-                android:horizontalSpacing="2dp"
-                android:numColumns="auto_fit"
-                android:stretchMode="columnWidth"
-                android:verticalSpacing="2dp" 
-                android:visibility="gone"/>
-
-            <RelativeLayout 
+                android:visibility="gone" />
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                >
-                <ImageView 
+                android:layout_marginTop="5dp" >
+                <ImageView
                     android:id="@+id/ivAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:paddingLeft="2dp"
                     android:layout_centerVertical="true"
+                    android:paddingLeft="2dp"
                     android:src="@drawable/qzone_address_icon"
-                    android:visibility="gone"
-                    />
-                <TextView 
+                    android:visibility="gone" />
+                <TextView
                     android:id="@+id/tvAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/ivAddress"
                     android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/ivAddress"
                     android:paddingLeft="5dp"
                     android:textSize="10sp"
-                    android:visibility="gone"
-                    />
+                    android:visibility="gone" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp" >
-
                 <ImageView
                     android:id="@+id/ivPhone"
                     android:layout_width="wrap_content"
@@ -126,7 +109,6 @@
                     android:gravity="center"
                     android:src="@drawable/status_phone" >
                 </ImageView>
-
                 <TextView
                     android:id="@+id/tvPhonemodel"
                     android:layout_width="wrap_content"
@@ -136,7 +118,6 @@
                     android:paddingLeft="3dp"
                     android:text="Nexus 5"
                     android:textSize="10sp" />
-
                 <TextView
                     android:id="@+id/tvComment"
                     android:layout_width="wrap_content"
@@ -146,7 +127,6 @@
                     android:paddingLeft="2dp"
                     android:text="评论"
                     android:textSize="10sp" />
-
                 <ImageView
                     android:id="@+id/ivComment"
                     android:layout_width="wrap_content"
@@ -157,7 +137,6 @@
                     android:paddingLeft="20dp"
                     android:src="@drawable/qzone_picviewer_bottom_comment_icon" >
                 </ImageView>
-
                 <TextView
                     android:id="@+id/tvAgree"
                     android:layout_width="wrap_content"
@@ -166,7 +145,6 @@
                     android:layout_toLeftOf="@id/ivComment"
                     android:text="赞"
                     android:textSize="10sp" />
-
                 <ImageView
                     android:id="@+id/ivAgree"
                     android:layout_width="wrap_content"
@@ -177,80 +155,76 @@
                     android:src="@drawable/qzone_picviewer_bottom_unpraise_icon" >
                 </ImageView>
             </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-            <ImageView
-                android:id="@+id/ivAgreeShow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="2dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:visibility="gone"
-                android:src="@drawable/qzone_picviewer_bottom_praise_icon"
-                />
-            <TextView 
-                android:id="@+id/tvAgreeShow"
-                android:layout_toRightOf="@id/ivAgreeShow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
-                android:layout_centerVertical="true"
-                android:visibility="gone"
-                />"
-            </RelativeLayout>
-            
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-            <TextView 
-                android:id="@+id/tvComments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
-                android:layout_centerVertical="true"
-                android:visibility="gone"
-                />"
-            </RelativeLayout>
-            
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp" >
-            <Button
-                android:id="@+id/btnSendComment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:textSize="10sp"
-                android:text="发送"
-                android:focusable="false"
-                android:background="#00000000"
-                android:visibility="gone"
-                />
-            <Button
-                android:id="@+id/btnComment"
+                <ImageView
+                    android:id="@+id/ivAgreeShow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/app_name"
+                    android:paddingLeft="2dp"
+                    android:src="@drawable/qzone_picviewer_bottom_praise_icon"
+                    android:visibility="gone" />
+                <TextView
+                    android:id="@+id/tvAgreeShow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/ivAgreeShow"
+                    android:paddingLeft="5dp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+            <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_toLeftOf="@id/btnSendComment"
-                android:hint="Please input your comment..."
-                android:background="@drawable/btn_shape"
-                android:textSize="10sp" />
-                </RelativeLayout>
+                android:layout_marginTop="5dp" >
+                <TextView
+                    android:id="@+id/tvComments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="5dp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" >
+                <Button
+                    android:id="@+id/btnSendComment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="15dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#00000000"
+                    android:focusable="false"
+                    android:text="发送"
+                    android:textSize="10sp"
+                    android:visibility="gone" />
+                <Button
+                    android:id="@+id/btnComment"
+                    android:layout_width="fill_parent"
+                    android:layout_height="15dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@id/btnSendComment"
+                    android:background="@drawable/btn_shape"
+                    android:hint="Please input your comment..."
+                    android:textSize="10sp" />
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
-
     <View
         android:id="@+id/lastLine"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:background="#ff474745"
         android:visibility="gone" />
-
 </LinearLayout>

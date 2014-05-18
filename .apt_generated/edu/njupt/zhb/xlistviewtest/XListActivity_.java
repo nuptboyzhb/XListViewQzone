@@ -75,8 +75,8 @@ public final class XListActivity_
 
     @Override
     public void onViewChanged(HasViews hasViews) {
-        etComment = ((EditText) hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.etComment));
         btnSendComment = ((Button) hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.btnSendComment));
+        etComment = ((EditText) hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.etComment));
         {
             View view = hasViews.findViewById(edu.njupt.zhb.xlistviewtest.R.id.btnSendComment);
             if (view!= null) {
@@ -111,20 +111,6 @@ public final class XListActivity_
     }
 
     @Override
-    public void refreshListViewInBackground() {
-        handler_.post(new Runnable() {
-
-
-            @Override
-            public void run() {
-                XListActivity_.super.refreshListViewInBackground();
-            }
-
-        }
-        );
-    }
-
-    @Override
     public void loadMoreInBackground() {
         handler_.post(new Runnable() {
 
@@ -132,6 +118,20 @@ public final class XListActivity_
             @Override
             public void run() {
                 XListActivity_.super.loadMoreInBackground();
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void refreshListViewInBackground() {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                XListActivity_.super.refreshListViewInBackground();
             }
 
         }
