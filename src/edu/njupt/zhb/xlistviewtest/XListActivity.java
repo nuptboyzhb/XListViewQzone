@@ -11,18 +11,17 @@ import me.maxwin.view.XListView.IXListViewListener;
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.Fullscreen;
 import org.androidannotations.annotations.ItemClick;
-import org.androidannotations.annotations.NoTitle;
 import org.androidannotations.annotations.UiThread;
 import org.androidannotations.annotations.ViewById;
 
 import android.app.Activity;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-@NoTitle
+@Fullscreen
 @EActivity(R.layout.activity_xlist)
 public class XListActivity extends Activity implements IXListViewListener {
 

@@ -14,8 +14,6 @@ import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -44,7 +42,7 @@ public final class XListActivity_
 
     private void init_(Bundle savedInstanceState) {
         OnViewChangedNotifier.registerOnViewChangedListener(this);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN, android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     @Override
@@ -54,7 +52,7 @@ public final class XListActivity_
     }
 
     @Override
-    public void setContentView(View view, LayoutParams params) {
+    public void setContentView(View view, android.view.ViewGroup.LayoutParams params) {
         super.setContentView(view, params);
         onViewChangedNotifier_.notifyViewChanged(this);
     }
@@ -111,20 +109,6 @@ public final class XListActivity_
     }
 
     @Override
-    public void refreshListViewInBackground() {
-        handler_.post(new Runnable() {
-
-
-            @Override
-            public void run() {
-                XListActivity_.super.refreshListViewInBackground();
-            }
-
-        }
-        );
-    }
-
-    @Override
     public void loadMoreInBackground() {
         handler_.post(new Runnable() {
 
@@ -132,6 +116,20 @@ public final class XListActivity_
             @Override
             public void run() {
                 XListActivity_.super.loadMoreInBackground();
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void refreshListViewInBackground() {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                XListActivity_.super.refreshListViewInBackground();
             }
 
         }
