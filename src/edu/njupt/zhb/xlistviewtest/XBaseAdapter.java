@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /*
  *@author: ZhengHaibo  
@@ -261,8 +262,9 @@ public class XBaseAdapter extends BaseAdapter {
 				}
 				model.setAgree(!model.isAgree());
 				model.setAgreeShow(agreeShow);
+				listViewData.set(position, model);
 				notifyDataSetChanged();
-				// Toast.makeText(context, "你点了赞", Toast.LENGTH_SHORT).show();
+				Toast.makeText(context, "你点了赞", Toast.LENGTH_SHORT).show();
 				break;
 			case R.id.ivComment:
 			case R.id.tvComment:
@@ -293,6 +295,7 @@ public class XBaseAdapter extends BaseAdapter {
 				}
 				commentsList.add(commentString);
 				mdl.setComments(commentsList);
+				listViewData.set(position, mdl);
 				notifyDataSetChanged();
 				((EditText) activity.findViewById(R.id.etComment)).setText("");
 				activity.findViewById(R.id.etComment).setVisibility(View.GONE);
